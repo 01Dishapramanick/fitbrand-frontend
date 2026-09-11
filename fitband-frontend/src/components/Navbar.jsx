@@ -1,44 +1,58 @@
-const links = ['Home', 'Shop', 'Categories', 'About']
+import React, { useState } from 'react';
 
 export default function Navbar() {
-  return (
-    <nav className="bg-[var(--color-card)] border-b border-[var(--color-line)]">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <h1 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl font-black text-[var(--color-ink)]">
-          FIT<span className="text-[var(--color-flare)]">BRAND</span>
-        </h1>
+  const [isOpen, setIsOpen] = useState(false);
 
-        <div className="hidden md:flex gap-8">
+  const links = [
+    { name: 'Shop All', href: '#shop' },
+    { name: 'Protein', href: '#protein' },
+    { name: 'Creatine', href: '#creatine' },
+    { name: 'Bundles', href: '#bundles' },
+    { name: 'Our Story', href: '#our-story' },
+  ];
+
+  return (
+    <nav className="bg-slate-950 text-white sticky top-0 z-50 border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <a href="#" className="text-xl font-black tracking-wider text-emerald-400">
+            FITBRAND<span className="text-white">.</span>
+          </a>
+
+          <div className="hidden md:flex space-x-8">
+            {links.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-300 p-2">
+              {isOpen ? '✕' : '☰'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {isOpen && (
+        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
           {links.map((link) => (
             <a
-              key={link}
-              href="#"
-              className="text-sm font-medium text-[var(--color-ink)] hover:text-[var(--color-flare)] transition-colors"
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className="block text-slate-300 hover:text-emerald-400 py-1 font-medium"
             >
-              {link}
+              {link.name}
             </a>
           ))}
         </div>
-
-        <div className="flex gap-4">
-          <button aria-label="Search" className="text-[var(--color-ink)] hover:text-[var(--color-flare)]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="7" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-          </button>
-          <button aria-label="Cart" className="relative text-[var(--color-ink)] hover:text-[var(--color-flare)]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="19" cy="21" r="1" />
-              <path d="M2.5 3h2l2.5 12.5h11l2-8h-14.5" />
-            </svg>
-            <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-[var(--color-flare)] text-[10px] text-white flex items-center justify-center">
-              2
-            </span>
-          </button>
-        </div>
-      </div>
+      )}
     </nav>
-  )
+  );
 }
