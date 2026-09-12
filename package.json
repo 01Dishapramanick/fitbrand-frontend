@@ -1,9 +1,9 @@
 {
+  "homepage": "https://01dishapramanick.github.io/fitbrand-frontend",
   "name": "fitband-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://prama.github.io/fitband-frontend",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
