@@ -1,60 +1,38 @@
+import React from 'react';
+
 export default function Hero() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <div>
-            <p className="text-sm tracking-[0.25em] text-[var(--color-flare)] font-bold mb-5">
-              NUTRITION FOR YOUR GOALS
-            </p>
-
-            <h2
-              style={{ fontFamily: 'var(--font-display)' }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] text-[var(--color-ink)]"
-            >
-              FUEL YOUR
-              <br />
-              <span className="text-[var(--color-flare)]">BEST SELF.</span>
-            </h2>
-
-            <p className="mt-7 text-[var(--color-muted)] text-base md:text-lg max-w-xl leading-relaxed">
-              Premium sports nutrition and wellness products designed to help you perform better,
-              recover faster and feel stronger.
-            </p>
-
-            <div className="flex gap-4 mt-8">
-              <button className="bg-[var(--color-flare)] text-white px-7 py-4 rounded-full font-bold hover:bg-[var(--color-ink)] transition-colors">
-                Shop Now →
-              </button>
-              <button className="border border-[var(--color-ink)] text-[var(--color-ink)] px-7 py-4 rounded-full font-bold hover:bg-[var(--color-ink)] hover:text-white transition-colors">
-                Explore Products
-              </button>
-            </div>
-          </div>
-
-          {/* Right visual */}
-          <div className="relative">
-            <div className="bg-[var(--color-flare)] rounded-[2rem] h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden">
-              <div className="text-center text-white">
-                <div className="text-[110px] md:text-[140px]">🥤</div>
-                <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl md:text-3xl font-black mt-4">
-                  TRAIN. PERFORM. RECOVER.
-                </h3>
-                <p className="mt-3 text-white/80">Built for your fitness journey.</p>
-              </div>
-            </div>
-
-            {/* Floating trust card */}
-            <div className="absolute -bottom-5 -left-3 md:-left-6 bg-[var(--color-card)] rounded-2xl shadow-lg px-5 py-4">
-              <p className="text-xs text-[var(--color-muted)]">TRUSTED BY</p>
-              <p style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-[var(--color-ink)]">
-                10K+ FITNESS LOVERS
-              </p>
-            </div>
-          </div>
+    <section id="shop" className="relative bg-slate-950 text-white py-24 overflow-hidden border-b border-slate-800">
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <span className="inline-block bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold text-xs uppercase tracking-widest py-1 px-3 rounded-full mb-4">
+          Doctor-Formulated Performance
+        </span>
+        <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
+          Unleash Peak Power with <br className="hidden md:inline" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
+            Clean Science
+          </span>
+        </h1>
+        <p className="text-slate-400 max-w-2xl mx-auto text-lg mb-8">
+          Pure, lab-verified formulas engineered specifically to increase explosive power, accelerate recovery, and support lean muscle growth.
+        </p>
+        <div className="flex justify-center gap-4">
+          <a
+            href="#protein"
+            className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition duration-200 shadow-lg shadow-emerald-500/20"
+          >
+            Explore Supplements
+          </a>
+          <a
+            href="#our-story"
+            className="bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold px-6 py-3 rounded-xl border border-slate-800 transition duration-200"
+          >
+            Learn Our Story
+          </a>
         </div>
       </div>
     </section>
-  )
+  );
 }
