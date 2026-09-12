@@ -1,60 +1,46 @@
+import React from 'react';
+
 export default function Hero() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <div>
-            <p className="text-sm tracking-[0.25em] text-[var(--color-flare)] font-bold mb-5">
-              NUTRITION FOR YOUR GOALS
-            </p>
+    <section id="shop" className="relative bg-zinc-950 text-white py-28 px-4 text-center overflow-hidden border-b border-zinc-800">
+      {/* Dark Grid Background Effect */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
+          backgroundSize: '30px 30px'
+        }}
+      />
 
-            <h2
-              style={{ fontFamily: 'var(--font-display)' }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.95] text-[var(--color-ink)]"
-            >
-              FUEL YOUR
-              <br />
-              <span className="text-[var(--color-flare)]">BEST SELF.</span>
-            </h2>
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <span className="text-lime-400 font-extrabold text-xs uppercase tracking-widest mb-4 inline-block">
+          PREMIUM PERFORMANCE SUPPLEMENTS
+        </span>
 
-            <p className="mt-7 text-[var(--color-muted)] text-base md:text-lg max-w-xl leading-relaxed">
-              Premium sports nutrition and wellness products designed to help you perform better,
-              recover faster and feel stronger.
-            </p>
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase leading-none mb-6">
+          FUEL YOUR <br />
+          NEXT SESSION.
+        </h1>
 
-            <div className="flex gap-4 mt-8">
-              <button className="bg-[var(--color-flare)] text-white px-7 py-4 rounded-full font-bold hover:bg-[var(--color-ink)] transition-colors">
-                Shop Now →
-              </button>
-              <button className="border border-[var(--color-ink)] text-[var(--color-ink)] px-7 py-4 rounded-full font-bold hover:bg-[var(--color-ink)] hover:text-white transition-colors">
-                Explore Products
-              </button>
-            </div>
-          </div>
+        <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8 font-medium">
+          Lab-tested, FSSAI compliant, and made for athletes who don't compromise.
+        </p>
 
-          {/* Right visual */}
-          <div className="relative">
-            <div className="bg-[var(--color-flare)] rounded-[2rem] h-[420px] md:h-[500px] flex items-center justify-center overflow-hidden">
-              <div className="text-center text-white">
-                <div className="text-[110px] md:text-[140px]">🥤</div>
-                <h3 style={{ fontFamily: 'var(--font-display)' }} className="text-2xl md:text-3xl font-black mt-4">
-                  TRAIN. PERFORM. RECOVER.
-                </h3>
-                <p className="mt-3 text-white/80">Built for your fitness journey.</p>
-              </div>
-            </div>
-
-            {/* Floating trust card */}
-            <div className="absolute -bottom-5 -left-3 md:-left-6 bg-[var(--color-card)] rounded-2xl shadow-lg px-5 py-4">
-              <p className="text-xs text-[var(--color-muted)]">TRUSTED BY</p>
-              <p style={{ fontFamily: 'var(--font-display)' }} className="text-xl font-black text-[var(--color-ink)]">
-                10K+ FITNESS LOVERS
-              </p>
-            </div>
-          </div>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#protein"
+            className="bg-lime-400 hover:bg-lime-300 text-black font-extrabold px-8 py-3.5 text-xs uppercase tracking-wider transition flex items-center justify-center gap-2"
+          >
+            SHOP ALL SUPPLEMENTS →
+          </a>
+          <a
+            href="#our-story"
+            className="bg-transparent hover:bg-zinc-900 border border-zinc-800 text-white font-extrabold px-8 py-3.5 text-xs uppercase tracking-wider transition"
+          >
+            VERIFY A BATCH
+          </a>
         </div>
       </div>
     </section>
-  )
+  );
 }
