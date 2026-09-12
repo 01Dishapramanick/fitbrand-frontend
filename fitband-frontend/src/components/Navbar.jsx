@@ -1,58 +1,56 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useCart } from './CartContext';
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const { totalItems, setIsCartOpen } = useCart();
 
   const links = [
-    { name: 'Shop All', href: '#shop' },
-    { name: 'Protein', href: '#protein' },
-    { name: 'Creatine', href: '#creatine' },
-    { name: 'Bundles', href: '#bundles' },
-    { name: 'Our Story', href: '#our-story' },
+    { name: 'SHOP', href: '#shop' },
+    { name: 'PROTEIN', href: '#protein' },
+    { name: 'CREATINE', href: '#creatine' },
+    { name: 'BUNDLES', href: '#bundles' },
+    { name: 'OUR STORY', href: '#our-story' },
   ];
 
   return (
-    <nav className="bg-slate-950 text-white sticky top-0 z-50 border-b border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <a href="#" className="text-xl font-black tracking-wider text-emerald-400">
-            FITBRAND<span className="text-white">.</span>
+    <header className="sticky top-0 z-50">
+      {/* Top Banner */}
+      <div className="bg-black text-[10px] sm:text-xs font-bold tracking-widest text-center py-2 text-lime-400 uppercase border-b border-zinc-800">
+        DOCTOR TESTED &nbsp;•&nbsp; LAB TESTED &nbsp;•&nbsp; FSSAI LICENSED &nbsp;•&nbsp; FREE SHIPPING ABOVE ₹999
+      </div>
+
+      {/* Main Nav */}
+      <nav className="bg-white text-black px-4 sm:px-8 py-4 flex items-center justify-between border-b border-gray-200 shadow-sm">
+        <div className="flex items-center space-x-8">
+          <a href="#" className="text-2xl font-black tracking-tighter flex items-center gap-1">
+            <span className="bg-black text-white px-1.5 py-0.5 rounded-sm">■</span> FITBRAND
           </a>
 
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden lg:flex space-x-6 text-xs font-extrabold tracking-wider">
             {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-sm font-semibold text-slate-300 hover:text-emerald-400 transition"
-              >
+              <a key={link.name} href={link.href} className="hover:text-lime-600 transition">
                 {link.name}
               </a>
             ))}
           </div>
-
-          <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-slate-300 p-2">
-              {isOpen ? '✕' : '☰'}
-            </button>
-          </div>
         </div>
-      </div>
 
-      {isOpen && (
-        <div className="md:hidden bg-slate-900 border-b border-slate-800 px-4 pt-2 pb-4 space-y-2">
-          {links.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
-              className="block text-slate-300 hover:text-emerald-400 py-1 font-medium"
-            >
-              {link.name}
-            </a>
-          ))}
+        <div className="flex items-center space-x-5">
+          <button className="text-gray-700 hover:text-black">🔍</button>
+          <button className="text-gray-700 hover:text-black">👤</button>
+          
+          <button onClick={() => setIsCartOpen(true)} className="relative p-1">
+            🛍️
+            <span className="absolute -top-1 -right-2 bg-lime-400 text-black text-[10px] font-black rounded-full h-4 w-4 flex items-center justify-center">
+              {totalItems || 0}
+            </span>
+          </button>
+
+          <a href="#shop" className="hidden sm:inline-block bg-black text-white text-xs font-extrabold px-5 py-2.5 hover:bg-zinc-800 transition uppercase tracking-wider">
+            SHOP NOW
+          </a>
         </div>
-      )}
-    </nav>
+      </nav>
+    </header>
   );
 }

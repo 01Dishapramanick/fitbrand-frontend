@@ -2,34 +2,42 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <section id="shop" className="relative bg-slate-950 text-white py-24 overflow-hidden border-b border-slate-800">
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]" />
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <span className="inline-block bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold text-xs uppercase tracking-widest py-1 px-3 rounded-full mb-4">
-          Doctor-Formulated Performance
+    <section id="shop" className="relative bg-zinc-950 text-white py-28 px-4 text-center overflow-hidden border-b border-zinc-800">
+      {/* Dark Grid Background Effect */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)`,
+          backgroundSize: '30px 30px'
+        }}
+      />
+
+      <div className="relative z-10 max-w-4xl mx-auto">
+        <span className="text-lime-400 font-extrabold text-xs uppercase tracking-widest mb-4 inline-block">
+          PREMIUM PERFORMANCE SUPPLEMENTS
         </span>
-        <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
-          Unleash Peak Power with <br className="hidden md:inline" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-200">
-            Clean Science
-          </span>
+
+        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter uppercase leading-none mb-6">
+          FUEL YOUR <br />
+          NEXT SESSION.
         </h1>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg mb-8">
-          Pure, lab-verified formulas engineered specifically to increase explosive power, accelerate recovery, and support lean muscle growth.
+
+        <p className="text-gray-400 text-sm sm:text-base max-w-xl mx-auto mb-8 font-medium">
+          Lab-tested, FSSAI compliant, and made for athletes who don't compromise.
         </p>
-        <div className="flex justify-center gap-4">
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a
             href="#protein"
-            className="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition duration-200 shadow-lg shadow-emerald-500/20"
+            className="bg-lime-400 hover:bg-lime-300 text-black font-extrabold px-8 py-3.5 text-xs uppercase tracking-wider transition flex items-center justify-center gap-2"
           >
-            Explore Supplements
+            SHOP ALL SUPPLEMENTS →
           </a>
           <a
             href="#our-story"
-            className="bg-slate-900 hover:bg-slate-800 text-slate-300 font-bold px-6 py-3 rounded-xl border border-slate-800 transition duration-200"
+            className="bg-transparent hover:bg-zinc-900 border border-zinc-800 text-white font-extrabold px-8 py-3.5 text-xs uppercase tracking-wider transition"
           >
-            Learn Our Story
+            VERIFY A BATCH
           </a>
         </div>
       </div>
