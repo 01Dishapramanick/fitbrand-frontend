@@ -1,14 +1,25 @@
 // src/components/Navbar.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useCart } from '../CartContext'; // Adjust path if needed
+import { Link, useNavigate } from 'react-router-dom';
+import { useCart } from '../CartContext';
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-  // Exact names matching your CartContext.jsx
+  const [searchQuery, setSearchQuery] = useState('');
+  
+  const navigate = useNavigate();
   const { totalItems, setIsCartOpen } = useCart();
+
+  // Trigger search when user presses Enter
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/protein?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsSearchOpen(false);
+      setSearchQuery('');
+    }
+  };
 
   return (
     <>
@@ -40,24 +51,32 @@ export default function Navbar() {
           {/* Nav Actions */}
           <div className="flex items-center gap-4 sm:gap-5">
             
-            {/* Search */}
+            {/* Working Search Form */}
             <div className="relative flex items-center">
               {isSearchOpen ? (
-                <div className="flex items-center bg-[#111111] border border-gray-700 overflow-hidden transition-all duration-300 w-44 sm:w-60">
+                <form 
+                  onSubmit={handleSearchSubmit} 
+                  className="flex items-center bg-[#111111] border border-gray-700 overflow-hidden transition-all duration-300 w-44 sm:w-60"
+                >
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Search supplements..."
                     autoFocus
                     className="bg-transparent text-xs text-white px-3 py-1.5 outline-none w-full placeholder-gray-500 font-mono"
                   />
                   <button
                     type="button"
-                    onClick={() => setIsSearchOpen(false)}
+                    onClick={() => {
+                      setIsSearchOpen(false);
+                      setSearchQuery('');
+                    }}
                     className="px-2.5 text-gray-400 hover:text-white text-xs transition-colors"
                   >
                     ✕
                   </button>
-                </div>
+                </form>
               ) : (
                 <button
                   type="button"
@@ -96,7 +115,7 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Cart Icon (Opens Drawer & Displays totalItems) */}
+            {/* Cart Icon */}
             <button
               type="button"
               onClick={() => setIsCartOpen(true)}
@@ -106,7 +125,6 @@ export default function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
 
-              {/* Dynamic Badge using totalItems */}
               <span className="absolute -top-1.5 -right-2 bg-[#D4F932] text-black font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center border border-[#181818]">
                 {totalItems}
               </span>
